@@ -8,13 +8,21 @@ export default function Dashboard({
 }) {
   return (
     <div>
-      <button onClick={recordStrike}>Strike</button>
+      <button onClick={recordStrike} data-testid="strike-button">
+        Strike
+      </button>
 
-      <button onClick={recordBall}>Ball</button>
+      <button onClick={recordBall} data-testid="ball-button">
+        Ball
+      </button>
 
-      <button onClick={recordFoul}>Foul</button>
+      <button onClick={recordFoul} data-testid="foul-button">
+        Foul
+      </button>
 
-      <button onClick={recordHit}>Hit</button>
+      <button onClick={recordHit} data-testid="hit-button">
+        Hit
+      </button>
     </div>
   );
 }
