@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Display({ balls, strikes }) {
+export default function Display({ balls=0, strikes=0 }) {
   return (
     <div>
       <h2> Balls: {balls}</h2>
