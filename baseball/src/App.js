@@ -1,24 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import Display from "./components/Display";
+import Dashboard from "./components/Dashboard";
 
 function App() {
+  const [balls, setBalls] = useState(0);
+  const [strikes, setStrikes] = useState(0);
+
+  const resetBallsaAndStrikes = () => {
+    setBalls(0);
+    setStrikes(0);
+  };
+
+  const recordStrike = () => {
+    strikes < 3 ? setStrikes(strikes + 1) : resetBallsaAndStrikes();
+  };
+
+  const recordBall = () => {
+    balls < 4 ? setBalls(balls + 1) : resetBallsaAndStrikes();
+  };
+
+  const recordFoul = () => {
+    strikes === 0 || strikes === 1 ? setStrikes(strikes + 1) :  setStrikes(strikes);
+  };
+
+  const recordHit = () => {
+    resetBallsaAndStrikes();
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Display balls={balls} strikes={strikes} />
+      <Dashboard
+        recordStrike={recordStrike}
+        recordBall={recordBall}
+        recordFoul={recordFoul}
+        recordHit={recordHit}
+      />
     </div>
   );
 }
